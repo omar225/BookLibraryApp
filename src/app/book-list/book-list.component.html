@@ -1,0 +1,23 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+<div class="container">
+  <div class="book-form-title">
+    <h1>Book list</h1>
+  </div>
+  <div class="row">
+    <a routerLink="/book-form" class="btn btn-primary mb-3">Add Book</a>
+    <div *ngFor="let book of books let i = index" class="col-md-4 mb-4">
+      <div class="card h-100">
+        <img src="../../assets/bookcover.jpg" class="card-img-top" alt="{{ book.title }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ book.title }}</h5>
+        </div>
+        <div class="card-footer text-center">
+          <button class="btn btn-primary" (click)=" viewBookDetails(i)">Check details</button>
+          <button class="btn btn-danger btn-sm" (click)="removeBook(i)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

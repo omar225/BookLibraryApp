@@ -1,0 +1,43 @@
+.book-form-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.book-form-title h1{
+    font-family: Dancing Script;
+    font-size: 4rem;
+    color: #2b5b82;
+}
+
+.centered-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh; /* Full viewport height */
+}
+.form-container {
+    width: 100%;
+    max-width: 600px; /* Set a max-width for the form */
+}
+
+#button{
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: #e6a447;
+    transition: background-color 0.3s ease;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.custom-btn {
+    background-color: #e6a447;
+    color: white; 
+    border: none; 
+}
+
+.custom-btn:hover {
+    background-color:#d48a22;
+}
+

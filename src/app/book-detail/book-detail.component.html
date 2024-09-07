@@ -1,0 +1,93 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+
+<div class="book-form-title">
+    <h1>{{ book ? (isEditing ? 'Edit Book' : 'Book Details') : 'Book Details' }}</h1>
+</div>
+<div class="centered-form-container">
+  <div class="container">
+    <form (ngSubmit)="onSubmit()" *ngIf="isEditing && book">
+        <div class="row">
+            <div class="form-group col-md-6" style="margin-bottom: 1.5rem;">
+                <label for="inputTitle">Title</label>
+                <input [(ngModel)]="book.title" name="title" type="text" class="form-control" id="inputTitle" placeholder="Title">
+            </div>
+            <div class="form-group col-md-6" style="margin-bottom: 1.5rem;">
+                <label for="inputAuthor">Author</label>
+                <input [(ngModel)]="book.author" name="author" type="text" class="form-control" id="inputAuthor" placeholder="Author">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4" style="margin-bottom: 1.5rem;">
+                <label for="Genre">Genre</label>
+                <input [(ngModel)]="book.genre" name="genre" type="text" class="form-control" id="inputGenre">
+            </div>
+            <div class="form-group col-md-4" style="margin-bottom: 1.5rem;">
+                <label for="publicationDate">Publication Date</label>
+                <input [(ngModel)]="book.publicationDate" name="publicationDate" type="date" class="form-control" id="inputPublicationDate">
+            </div>
+            <div class="form-group col-md-4" style="margin-bottom: 1.5rem;">
+                <label for="rating">Rating</label>
+                <input [(ngModel)]="book.rating" name="rating" type="number" class="form-control" id="inputRating" min="1" max="5" #rating="ngModel">
+                <small *ngIf="rating.invalid && (rating.dirty || rating.touched)" class="text-danger">
+                    Rating must be a number between 1 and 5.
+                </small>
+            </div>
+        </div>
+        <div class="form-group" style="margin-bottom: 1.5rem;">
+            <label for="summary">Summary</label>
+            <textarea [(ngModel)]="book.summary" name="summary" class="form-control" id="inputSummary" rows="3"></textarea>
+        </div>
+        <div class="row">
+            <div class="col-md-auto">
+                <button type="submit" class="btn btn-primary btn-ml-2">Update Book</button>
+            </div>
+            <div class="col-md-auto">
+                <button class="btn btn-danger btn-ml-2" (click)="goBack()">Cancel</button>
+            </div>
+        </div>
+    </form>
+    <div *ngIf="!isEditing && book">
+      <div class="row">
+        <div class="form-group col-md-6" style="margin-bottom: 1.5rem;">
+            <label for="inputTitle">Title</label>
+            <input [(ngModel)]="book.title" name="title" type="text" class="form-control" id="inputTitle" placeholder="Title" readonly>
+        </div>
+        <div class="form-group col-md-6" style="margin-bottom: 1.5rem;">
+            <label for="inputAuthor">Author</label>
+            <input [(ngModel)]="book.author" name="author" type="text" class="form-control" id="inputAuthor" placeholder="Author" readonly>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-4" style="margin-bottom: 1.5rem;">
+            <label for="Genre">Genre</label>
+            <input [(ngModel)]="book.genre" name="genre" type="text" class="form-control" id="inputGenre" readonly>
+        </div>
+        <div class="form-group col-md-4" style="margin-bottom: 1.5rem;">
+            <label for="publicationDate">Publication Date</label>
+            <input [(ngModel)]="book.publicationDate" name="publicationDate" type="date" class="form-control" id="inputPublicationDate" readonly>
+        </div>
+        <div class="form-group col-md-4" style="margin-bottom: 1.5rem;">
+            <label for="rating">Rating</label>
+            <input [(ngModel)]="book.rating" name="rating" type="number" class="form-control" id="inputRating" min="1" max="5" #rating="ngModel" readonly>
+            <small *ngIf="rating.invalid && (rating.dirty || rating.touched)" class="text-danger">
+                Rating must be a number between 1 and 5.
+            </small>
+        </div>
+    </div>
+    <div class="form-group" style="margin-bottom: 1.5rem;">
+        <label for="summary">Summary</label>
+        <textarea [(ngModel)]="book.summary" name="summary" class="form-control" id="inputSummary" rows="3" readonly></textarea>
+    </div>
+    </div>
+    <div class="row button-row mt-4">
+        <div class="col-md-auto">
+            <button *ngIf="!isEditing" class="btn btn-success btn-ml-2" (click)="enableEditing()">Edit</button>
+        </div>
+        <div class="col-md-auto">
+            <button *ngIf="!isEditing" class="btn btn-danger btn-ml-2" (click)="goBack()">Back</button>
+        </div>
+    </div>
+  </div>
+</div>
